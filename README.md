@@ -356,11 +356,13 @@ Run the backend suite with:
 .venv/bin/python -m unittest discover -v
 ```
 
-/      *
+```text
+       *
        /\
       /  \
      / *  \
     /  .   \
    /  * . * \
 ~~~~~~~~~~~~~~~~~
- (  °  .  °  )
+  (  °  .  °  )
+```

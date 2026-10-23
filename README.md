@@ -355,3 +355,12 @@ Run the backend suite with:
 ```bash
 .venv/bin/python -m unittest discover -v
 ```
+
+/      *
+       /\
+      /  \
+     / *  \
+    /  .   \
+   /  * . * \
+~~~~~~~~~~~~~~~~~
+ (  °  .  °  )

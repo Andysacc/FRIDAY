@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#02070d" />
+    <meta name="description" content="FRIDAY — a private, local-first AI command center." />
+    <meta name="application-name" content="FRIDAY" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="FRIDAY" />
+    <title>FRIDAY · Local Command Center</title>
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="icon" href="/icons/friday.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/icons/friday-180.png" />
+    <link rel="stylesheet" href="/styles.css?v=arc-17" />
+  </head>
+  <body>
+    <svg class="icon-sprite" aria-hidden="true" focusable="false">
+      <defs>
+        <symbol id="icon-menu" viewBox="0 0 24 24">
+          <path d="M3 5.25A2.25 2.25 0 0 1 5.25 3h13.5A2.25 2.25 0 0 1 21 5.25v2.5A2.25 2.25 0 0 1 18.75 10H5.25A2.25 2.25 0 0 1 3 7.75v-2.5Zm0 11A2.25 2.25 0 0 1 5.25 14h13.5A2.25 2.25 0 0 1 21 16.25v2.5A2.25 2.25 0 0 1 18.75 21H5.25A2.25 2.25 0 0 1 3 18.75v-2.5Z" />
+        </symbol>
+        <symbol id="icon-briefing" viewBox="0 0 24 24">
+          <path d="M3 4.5A2.5 2.5 0 0 1 5.5 2h13A2.5 2.5 0 0 1 21 4.5v10a2.5 2.5 0 0 1-2.5 2.5h-7l-5.75 4.25V17H5.5A2.5 2.5 0 0 1 3 14.5v-10Z" />
+          <path class="icon-detail" d="M7 6.5h10v2H7zm0 4h10v2H7z" />
+        </symbol>
+        <symbol id="icon-tools" viewBox="0 0 24 24">
+          <path d="M3 9h18v10.5A2.5 2.5 0 0 1 18.5 22h-13A2.5 2.5 0 0 1 3 19.5V9Zm4-5.25A1.75 1.75 0 0 1 8.75 2h6.5A1.75 1.75 0 0 1 17 3.75V7h-3V5H10v2H7V3.75Z" />
+          <path class="icon-detail" d="M3 12h7v2.5a2 2 0 0 0 4 0V12h7v2h-5.1a4 4 0 0 1-7.8 0H3v-2Z" />
+        </symbol>
+        <symbol id="icon-projects" viewBox="0 0 24 24">
+          <path d="M2 6.5A2.5 2.5 0 0 1 4.5 4H10l2 2h7.5A2.5 2.5 0 0 1 22 8.5v9A2.5 2.5 0 0 1 19.5 20h-15A2.5 2.5 0 0 1 2 17.5v-11Z" />
+          <path class="icon-detail" d="M6 10h8v2H6zm0 4h12v2H6z" />
+        </symbol>
+        <symbol id="icon-voice" viewBox="0 0 24 24">
+          <path d="M12 2a9 9 0 0 0-9 9v6.25A2.75 2.75 0 0 0 5.75 20H9v-8H6a6 6 0 0 1 12 0h-3v8h3.25A2.75 2.75 0 0 0 21 17.25V11a9 9 0 0 0-9-9Z" />
+        </symbol>
+        <symbol id="icon-terminal" viewBox="0 0 24 24">
+          <rect x="2" y="3" width="20" height="18" rx="2.5" />
+          <path class="icon-detail" d="m6 8 3.5 3L6 14l1.4 1.5L12.5 11 7.4 6.5 6 8Zm7 6h5v2h-5v-2Z" />
+        </symbol>
+        <symbol id="icon-diagnostics" viewBox="0 0 24 24">
+          <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2Z" />
+          <path class="icon-detail" d="M6.2 15.5A7 7 0 0 1 18 8l-1.6 1.2a5 5 0 0 0-8.5 5.3H6.2Zm8.7-6.6-4.2 2.4A2 2 0 1 0 13 14.5l3.2-4.3-1.3-1.3Z" />
+        </symbol>
+        <symbol id="icon-settings" viewBox="0 0 24 24">
+          <path fill-rule="evenodd" d="m9.6 2-.65 2.08c-.5.2-.98.47-1.42.79l-2.1-.46-1.8 3.12 1.45 1.62A7.8 7.8 0 0 0 5 10.8L3 12l.65 3.55 2.16.36c.27.5.6.96.97 1.37l-.66 2.08 2.95 2.07 1.73-1.29c.53.08 1.07.1 1.62.04L14 21.72l3.35-1.35-.16-2.2c.42-.35.8-.75 1.12-1.19l2.15.18L22 13.9l-1.7-1.39c.04-.54.01-1.09-.1-1.62l1.28-1.8-2.2-2.86-2.05.79a8.5 8.5 0 0 0-1.4-.9L15.35 4 9.6 2Zm2.4 6.3a3.7 3.7 0 1 0 0 7.4 3.7 3.7 0 0 0 0-7.4Z" />
+        </symbol>
+        <symbol id="icon-todo" viewBox="0 0 24 24">
+          <path d="M7 3h2.2a3 3 0 0 1 5.6 0H17a3 3 0 0 1 3 3v13a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3Z" />
+          <path class="icon-detail" d="M9.5 4.5h5v2h-5zM8 10h2v2H8zm4 0h5v2h-5zm-4 5h2v2H8zm4 0h5v2h-5z" />
+        </symbol>
+        <symbol id="icon-automation" viewBox="0 0 24 24">
+          <path d="m14 1-9 12h6l-1 10 9-13h-6l1-9Z" />
+        </symbol>
+        <symbol id="icon-files" viewBox="0 0 24 24">
+          <path d="M5 2h9l5 5v14a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1Z" />
+          <path class="icon-detail" d="M14 2v6h5zM8 12h8v2H8zm0 4h8v2H8z" />
+        </symbol>
+        <symbol id="icon-attach" viewBox="0 0 24 24">
+          <path d="M17.7 6.3a5 5 0 0 0-7.1 0l-6.2 6.2a4 4 0 1 0 5.7 5.7l6.2-6.2-2.1-2.1L8 16.1a1 1 0 0 1-1.4-1.4l6.2-6.2a2 2 0 0 1 2.8 2.8l-6.2 6.2 2.1 2.1 6.2-6.2a5 5 0 0 0 0-7.1Z" />
+        </symbol>
+        <symbol id="icon-mic" viewBox="0 0 24 24">
+          <path d="M12 2a4 4 0 0 0-4 4v6a4 4 0 1 0 8 0V6a4 4 0 0 0-4-4Zm7 10a1 1 0 0 0-2 0 5 5 0 0 1-10 0 1 1 0 0 0-2 0 7 7 0 0 0 6 6.92V21H8.5a1 1 0 0 0 0 2h7a1 1 0 0 0 0-2H13v-2.08A7 7 0 0 0 19 12Z" />
+        </symbol>
+        <symbol id="icon-send" viewBox="0 0 24 24">
+          <path d="m2.8 3.1 18.4 7.8a1.2 1.2 0 0 1 0 2.2L2.8 20.9a1.1 1.1 0 0 1-1.48-1.24L2.9 13l9.1-1-9.1-1-1.58-6.66A1.1 1.1 0 0 1 2.8 3.1Z" />
+        </symbol>
+        <symbol id="icon-check" viewBox="0 0 24 24">
+          <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2Z" />
+          <path class="icon-detail" d="m9.8 16.6-4-4 1.9-1.9 2.1 2.1 6.5-6.5 1.9 1.9-8.4 8.4Z" />
+        </symbol>
+        <symbol id="icon-clear" viewBox="0 0 24 24">
+          <path d="M6.5 4.4 12 9.9l5.5-5.5 2.1 2.1-5.5 5.5 5.5 5.5-2.1 2.1-5.5-5.5-5.5 5.5-2.1-2.1L9.9 12 4.4 6.5l2.1-2.1Z" />
+        </symbol>
+      </defs>
+    </svg>
+    <div class="scanlines" aria-hidden="true"></div>
+    <div id="toastRegion" class="toast-region" aria-live="polite"></div>
+
+    <header class="topbar">
+      <div class="brand-group">
+        <a class="brand" href="#overview" aria-label="FRIDAY home">FRIDAY</a>
+        <span class="secure-state"><i></i> Local / Secure</span>
+      </div>
+
+      <div class="topbar-controls">
+        <div class="model-control">
+          <span class="control-label">Model</span>
+          <button id="modelButton" type="button" aria-expanded="false" aria-controls="modelMenu">
+            <span id="activeModel">Loading…</span><span class="chevron">⌄</span>
+          </button>
+          <div id="modelMenu" class="popover model-menu" hidden></div>
+        </div>
+        <span id="readyState" class="ready-state"><i></i> Ready</span>
+        <button id="commandButton" class="command-button" type="button" aria-expanded="false" aria-controls="commandPalette">
+          <span class="prompt-mark">›_</span><span>Command</span><kbd>⌘ K</kbd>
+        </button>
+      </div>
+    </header>
+
+    <main class="dashboard" id="overview">
+      <section id="briefing" class="panel briefing-panel" aria-labelledby="briefingTitle">
+        <header class="briefing-header">
+          <div>
+            <p id="greeting" class="eyebrow">Mission brief</p>
+            <h1 id="briefingTitle">What are we building tonight?</h1>
+          </div>
+          <button id="clearConversation" class="quiet-button" type="button">Clear</button>
+        </header>
+        <span class="accent-line" aria-hidden="true"></span>
+
+        <div id="conversationScroll" class="conversation-scroll">
+          <div id="messages" class="messages" aria-live="polite"></div>
+        </div>
+
+        <form id="chatForm" class="composer">
+          <div id="attachmentTray" class="attachment-tray" hidden aria-live="polite"></div>
+          <div id="mentionMenu" class="mention-menu" hidden role="listbox" aria-label="Research knowledge suggestions"></div>
+          <input id="fileInput" type="file" hidden multiple accept=".txt,.md,.markdown,.csv,.tsv,.json,.yaml,.yml,.xml,.html,.htm,.log,.py,.js,.jsx,.ts,.tsx,.css,.scss,.sql,.sh,.toml,.ini,.cfg,.pdf,.docx,text/*,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document" />
+          <button id="attachButton" class="composer-attach" type="button" aria-label="Attach files" title="Attach files (text, code, PDF, or DOCX)"><svg class="ui-icon" aria-hidden="true"><use href="#icon-attach"></use></svg></button>
+          <label class="sr-only" for="messageInput">Message Friday</label>
+          <textarea id="messageInput" rows="1" placeholder="Message FRIDAY…"></textarea>
+          <button id="voiceButton" class="composer-voice" type="button" aria-label="Start voice link"><svg class="ui-icon" aria-hidden="true"><use href="#icon-mic"></use></svg></button>
+          <button id="sendButton" class="send-button" type="submit" aria-label="Send message"><svg class="ui-icon" aria-hidden="true"><use href="#icon-send"></use></svg></button>
+        </form>
+        <footer class="chat-footer">
+          <div class="workspace-actions">
+            <button id="todoButton" class="footer-action" type="button" data-tool="todo"><svg class="ui-icon" aria-hidden="true"><use href="#icon-todo"></use></svg><span>Todo</span><b id="openTodoCount">0</b></button>
+            <button id="healthCheckButton" class="footer-action" type="button" aria-haspopup="dialog"><svg class="ui-icon" aria-hidden="true"><use href="#icon-diagnostics"></use></svg><span>Health check</span><i id="healthIndicator" class="health-indicator"></i></button>
+          </div>
+          <span class="composer-hint">Enter to send <span>·</span> Shift + Enter for a new line</span>
+        </footer>
+      </section>
+
+      <aside class="right-rail" aria-label="Voice and system controls">
+        <section id="voice" class="core-stage" aria-label="FRIDAY voice core">
+          <button id="voiceOrb" class="core-visual" type="button" aria-label="Start voice link">
+            <span class="core-crop" aria-hidden="true">
+              <canvas id="voiceOrbCanvas"></canvas>
+              <span class="core-reticle"><i></i><i></i><i></i><i></i></span>
+            </span>
+            <span id="voiceOrbMode" class="core-state">Standby</span>
+          </button>
+          <section class="voice-link-panel">
+            <div class="voice-link-title"><span>Voice link</span><button id="callLogStatus" type="button" title="View voice activity">Standby</button></div>
+            <div id="voiceWave" class="waveform" aria-hidden="true"></div>
+            <div class="voice-metrics"><span>Latency <b id="latencyValue">128 ms</b></span><span>Quality <b id="qualityValue">High</b></span></div>
+            <button id="endCallButton" class="end-call" type="button" hidden>End link</button>
+          </section>
+        </section>
+
+        <section class="panel monitor-panel" aria-label="System monitors">
+          <div class="monitor-tabs" role="tablist" aria-label="Telemetry">
+            <button id="systemsTab" type="button" role="tab" aria-selected="true" aria-controls="systemsPanel">Systems</button>
+            <button id="audioTab" type="button" role="tab" aria-selected="false" aria-controls="audioPanel" tabindex="-1">Audio</button>
+          </div>
+          <section id="systemsPanel" class="telemetry-card systems-card" role="tabpanel" aria-labelledby="systemsTab" tabindex="0">
+            <header><h2>Systems</h2><span id="systemsStatus" class="nominal"><i></i> Connecting</span></header>
+            <div class="gauges">
+              <div class="gauge" style="--value:0;--gauge:#6385bc"><span>CPU<b id="cpuValue">—</b></span></div>
+              <div class="gauge" style="--value:0;--gauge:#168fff"><span>RAM<b id="ramValue">—</b></span></div>
+              <div class="gauge" style="--value:0;--gauge:#ff9d17"><span>Temp<b id="tempValue">—</b></span></div>
+            </div>
+          </section>
+
+          <section id="audioPanel" class="telemetry-card audio-card" role="tabpanel" aria-labelledby="audioTab" tabindex="0" hidden>
+            <header><h2>Audio</h2><span id="audioStatus" class="nominal"><i></i> Standby</span></header>
+            <div id="audioWave" class="mini-wave" aria-hidden="true"></div>
+            <div class="meter-row"><span>Input</span><i><b id="inputMeter"></b></i><em id="inputDb">−42 dB</em></div>
+            <div class="meter-row"><span>Output</span><i><b id="outputMeter"></b></i><em id="outputDb">−18 dB</em></div>
+          </section>
+
+        </section>
+        <div class="rail-footer">
+          <span class="rail-caption"><i></i> FRIDAY workspace</span>
+          <div class="tools-anchor">
+            <button id="toolsButton" class="tools-toggle" type="button" aria-expanded="false" aria-controls="toolsMenu">
+              <svg class="ui-icon" aria-hidden="true"><use href="#icon-tools"></use></svg><span>Tools</span><span class="chevron">⌃</span>
+            </button>
+            <section id="toolsMenu" class="tools-popover" aria-label="Workspace tools" hidden>
+              <header><span class="section-label">Workspace tools</span><button id="closeToolsMenu" class="quiet-button" type="button" aria-label="Close tools">×</button></header>
+              <div class="tool-launcher">
+                <button id="research" type="button" data-tool="research"><svg class="ui-icon" aria-hidden="true"><use href="#icon-files"></use></svg><b>Research</b></button>
+                <button type="button" data-tool="projects"><svg class="ui-icon" aria-hidden="true"><use href="#icon-projects"></use></svg><b>Projects</b></button>
+                <button type="button" data-tool="automation"><svg class="ui-icon" aria-hidden="true"><use href="#icon-automation"></use></svg><b>Automations</b></button>
+                <button type="button" data-tool="terminal"><svg class="ui-icon" aria-hidden="true"><use href="#icon-terminal"></use></svg><b>Terminal</b></button>
+                <button type="button" data-tool="files"><svg class="ui-icon" aria-hidden="true"><use href="#icon-files"></use></svg><b>Files</b></button>
+                <button type="button" data-tool="todo"><svg class="ui-icon" aria-hidden="true"><use href="#icon-todo"></use></svg><b>Todo</b></button>
+              </div>
+            </section>
+          </div>
+        </div>
+      </aside>
+    </main>
+
+    <dialog id="commandPalette" class="command-palette">
+      <form method="dialog" class="palette-shell">
+        <div class="palette-search"><span>›_</span><input id="commandInput" type="text" placeholder="Type a command or search tools…" autocomplete="off" /><button value="cancel" aria-label="Close">Esc</button></div>
+        <div id="commandResults" class="command-results"></div>
+        <p class="palette-hint">↑↓ navigate · Enter select · Esc close</p>
+      </form>
+    </dialog>
+
+    <dialog id="toolDialog" class="tool-dialog" aria-labelledby="drawerTitle">
+      <section class="drawer-shell">
+        <header class="drawer-header"><div><p class="section-label">FRIDAY module</p><h2 id="drawerTitle">Tool</h2></div><button id="closeToolDialog" type="button" aria-label="Close">×</button></header>
+        <div id="drawerBody" class="drawer-body"></div>
+      </section>
+    </dialog>
+
+    <dialog id="healthCheckDialog" class="tool-dialog health-dialog" aria-labelledby="healthCheckTitle">
+      <section class="drawer-shell">
+        <header class="drawer-header"><div><p class="section-label">FRIDAY diagnostics</p><h2 id="healthCheckTitle">System health check</h2></div><button id="closeHealthCheck" type="button" aria-label="Close health check">×</button></header>
+        <div class="drawer-body">
+          <div class="health-toolbar"><p id="healthSummary" role="status">Ready to check local services</p><button id="runDiagnostics" class="drawer-action" type="button">Run check</button></div>
+          <div id="healthLogs" class="health-logs" role="log" aria-label="Health check logs" aria-live="polite"></div>
+        </div>
+      </section>
+    </dialog>
+
+    <section id="callLogDrawer" class="call-log-drawer" hidden aria-live="polite">
+      <header><span>Voice activity</span><button id="closeCallLog" type="button">×</button></header>
+      <div id="callLogBody"></div>
+    </section>
+
+    <script src="/app.js?v=arc-17" type="module"></script>
+  </body>
+</html>

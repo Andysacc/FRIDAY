@@ -1,0 +1,23 @@
+use_default_settings: true
+
+general:
+  instance_name: "FRIDAY Search"
+
+search:
+  safe_search: 1
+  autocomplete: ""
+  formats:
+    - html
+    - json
+
+server:
+  secret_key: "friday-local-research-only-change-before-public-exposure"
+  limiter: false
+  image_proxy: false
+
+outgoing:
+  request_timeout: 8.0
+  max_request_timeout: 18.0
+
+# Google is one discovery source, not a single point of failure. SearXNG's
+# default engines provide fallbacks when an upstream engine blocks automation.

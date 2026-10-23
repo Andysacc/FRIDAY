@@ -1,0 +1,25 @@
+.env
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.DS_Store
+data/
+models/
+
+# Local datasets and personal documents
+app/samples/*.csv
+app/samples/*.tsv
+[Dd]ocuments/
+uploads/
+*.pdf
+*.docx
+*.doc
+*.xlsx
+*.xls
+*.pptx
+*.ppt
+
+# Generated voice previews
+app/static/voice-auditions/
+friday.wav

@@ -1,0 +1,2 @@
+# Lightweight local TTS; ONNX Runtime is also used by Faster-Whisper.
+kokoro-onnx==0.6.1

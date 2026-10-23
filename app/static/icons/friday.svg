@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title description">
+  <title id="title">FRIDAY</title>
+  <desc id="description">A blue orbital command node forming the letter F</desc>
+  <defs>
+    <radialGradient id="background" cx="50%" cy="42%" r="72%">
+      <stop offset="0" stop-color="#0a2942"/>
+      <stop offset="0.58" stop-color="#03111d"/>
+      <stop offset="1" stop-color="#02070d"/>
+    </radialGradient>
+    <linearGradient id="arc" x1="92" y1="72" x2="410" y2="438" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#61d8ff"/>
+      <stop offset="0.52" stop-color="#149cff"/>
+      <stop offset="1" stop-color="#38f0bd"/>
+    </linearGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="10" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect width="512" height="512" rx="112" fill="url(#background)"/>
+  <circle cx="256" cy="256" r="163" fill="none" stroke="#0b3857" stroke-width="4"/>
+  <path d="M131 324A164 164 0 0 1 374 127" fill="none" stroke="url(#arc)" stroke-width="15" stroke-linecap="round" filter="url(#glow)"/>
+  <path d="M381 188a164 164 0 0 1-27 203" fill="none" stroke="#38f0bd" stroke-width="8" stroke-linecap="round" opacity=".8"/>
+  <circle cx="128" cy="324" r="14" fill="#61d8ff" filter="url(#glow)"/>
+  <circle cx="376" cy="128" r="11" fill="#149cff" filter="url(#glow)"/>
+  <circle cx="354" cy="391" r="9" fill="#38f0bd" filter="url(#glow)"/>
+  <path d="M206 154h136v38h-91v50h79v38h-79v89h-45V154Z" fill="#eaf8ff"/>
+  <path d="M206 154h136" stroke="#61d8ff" stroke-width="6" stroke-linecap="round" filter="url(#glow)"/>
+  <circle cx="256" cy="256" r="194" fill="none" stroke="#149cff" stroke-width="2" stroke-dasharray="3 17" opacity=".4"/>
+</svg>

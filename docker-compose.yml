@@ -1,0 +1,163 @@
+services:
+  friday:
+    build: .
+    container_name: friday
+    ports:
+      - "8080:8080"
+    env_file:
+      - .env
+    volumes:
+      - ./data:/data
+    depends_on:
+      livekit:
+        condition: service_started
+      ollama-pull:
+        condition: service_completed_successfully
+      searxng:
+        condition: service_started
+      qdrant:
+        condition: service_started
+    environment:
+      DATA_DIR: /data
+      RESEARCH_DIR: /data/Research
+      LIVEKIT_URL: ws://livekit:7880
+      LIVEKIT_PUBLIC_URL: ws://localhost:7880
+      LIVEKIT_AGENT_NAME: friday
+
+  friday-agent:
+    build: .
+    container_name: friday-agent
+    command: ["python", "-m", "app.providers.voice_agent", "dev"]
+    env_file:
+      - .env
+    volumes:
+      - ./models:/friday/models
+      - whisper-cache:/root/.cache/huggingface
+    depends_on:
+      friday:
+        condition: service_started
+      livekit:
+        condition: service_started
+      ollama-pull:
+        condition: service_completed_successfully
+    environment:
+      LIVEKIT_URL: ws://livekit:7880
+      LIVEKIT_AGENT_NAME: friday
+      OLLAMA_OPENAI_BASE_URL: ${OLLAMA_OPENAI_BASE_URL:-http://host.docker.internal:11434/v1}
+      FRIDAY_API_BASE_URL: http://friday:8080
+
+  friday-reminders:
+    build: .
+    container_name: friday-reminders
+    command: ["python", "-m", "app.reminders.worker"]
+    env_file:
+      - .env
+    volumes:
+      - ./data:/data
+    depends_on:
+      friday:
+        condition: service_started
+    environment:
+      DATA_DIR: /data
+    restart: unless-stopped
+
+  friday-research:
+    build: .
+    container_name: friday-research
+    command: ["python", "-m", "app.research.worker"]
+    env_file:
+      - .env
+    volumes:
+      - ./data:/data
+    environment:
+      DATA_DIR: /data
+      RESEARCH_DIR: /data/Research
+    depends_on:
+      ollama-research-pull:
+        condition: service_completed_successfully
+      ollama-embedding-pull:
+        condition: service_completed_successfully
+      searxng:
+        condition: service_started
+      qdrant:
+        condition: service_started
+    restart: unless-stopped
+
+  livekit:
+    image: livekit/livekit-server:latest
+    container_name: friday-livekit
+    environment:
+      LIVEKIT_KEYS: "${LIVEKIT_API_KEY:?Set LIVEKIT_API_KEY in .env}: ${LIVEKIT_API_SECRET:?Set LIVEKIT_API_SECRET in .env}"
+    command: ["--config", "/etc/livekit.yaml", "--bind", "0.0.0.0"]
+    volumes:
+      - ./livekit.yaml:/etc/livekit.yaml:ro
+    ports:
+      - "7880:7880"
+      - "7881:7881"
+      - "7882:7882/udp"
+
+  ollama:
+    image: ollama/ollama:0.31.1
+    container_name: friday-ollama
+    ports:
+      # Native Ollama owns 11434 on macOS for Metal acceleration. This
+      # container remains an optional CPU fallback on 11435.
+      - "${OLLAMA_DOCKER_PORT:-11435}:11434"
+    volumes:
+      - ollama:/root/.ollama
+    healthcheck:
+      test: ["CMD", "ollama", "list"]
+      interval: 5s
+      timeout: 3s
+      retries: 12
+
+  ollama-pull:
+    image: ollama/ollama:0.31.1
+    depends_on:
+      ollama:
+        condition: service_healthy
+    environment:
+      OLLAMA_HOST: ${OLLAMA_BASE_URL:-http://ollama:11434}
+    command: ["pull", "${DEFAULT_MODEL:-qwen2.5:0.5b}"]
+    restart: "no"
+
+  ollama-research-pull:
+    image: ollama/ollama:0.31.1
+    depends_on:
+      ollama:
+        condition: service_healthy
+    environment:
+      OLLAMA_HOST: ${OLLAMA_BASE_URL:-http://ollama:11434}
+    command: ["pull", "${RESEARCH_MODEL:-qwen3:8b}"]
+    restart: "no"
+
+  ollama-embedding-pull:
+    image: ollama/ollama:0.31.1
+    depends_on:
+      ollama:
+        condition: service_healthy
+    environment:
+      OLLAMA_HOST: ${OLLAMA_BASE_URL:-http://ollama:11434}
+    command: ["pull", "${RESEARCH_EMBEDDING_MODEL:-bge-m3}"]
+    restart: "no"
+
+  searxng:
+    image: searxng/searxng:latest
+    container_name: friday-searxng
+    volumes:
+      - ./config/searxng/settings.yml:/etc/searxng/settings.yml:ro
+    environment:
+      SEARXNG_BASE_URL: http://searxng:8080/
+    restart: unless-stopped
+
+  qdrant:
+    image: qdrant/qdrant:v1.18.3
+    container_name: friday-qdrant
+    volumes:
+      - qdrant:/qdrant/storage
+    restart: unless-stopped
+
+volumes:
+  ollama:
+  whisper-cache:
+  qdrant:
